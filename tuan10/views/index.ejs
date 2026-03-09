@@ -1,0 +1,63 @@
+<h2>Product List</h2>
+
+<form action="/search" method="GET">
+
+<input 
+type="text" 
+name="keyword" 
+placeholder="Search product name..."
+required>
+
+<button type="submit">Search</button>
+
+<a href="/">Reset</a>
+
+</form>
+
+<br>
+
+<a href="/add">Add Product</a>
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Image</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Action</th>
+</tr>
+
+<% products.forEach(p => { %>
+
+<tr>
+
+<td><%= p.id %></td>
+
+<td><%= p.name %></td>
+
+<td>
+<img src="<%= p.image %>" width="80">
+</td>
+
+<td><%= p.price %></td>
+
+<td><%= p.quantity %></td>
+
+<td>
+
+<a href="/edit/<%= p.id %>">Edit</a>
+
+|
+
+<a href="/delete/<%= p.id %>" onclick="return confirm('Delete product?')">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</table>
